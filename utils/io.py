@@ -154,7 +154,7 @@ class VideoLoader:
         return batch, times, indices
 
     def __len__(self):
-        return self.num_frames
+        return self.num_frames // self.batch_size + 1
 
     def __del__(self):
         # use `hasattr` in case the attribution has not been defined
