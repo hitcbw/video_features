@@ -6,7 +6,7 @@ import numpy as np
 import torch
 from models._base.base_extractor import BaseExtractor
 from utils.io import VideoLoader
-
+import tqdm
 
 class BaseFrameWiseExtractor(BaseExtractor):
     '''Common things for all frame-wise extractors (such as ResNet or CLIP).
@@ -66,7 +66,7 @@ class BaseFrameWiseExtractor(BaseExtractor):
         )
         vid_feats = []
         timestamps_ms = []
-        for batch, timestamp_ms, idx in video:
+        for batch, timestamp_ms, idx in tqdm.tqdm(video):
             # batch = torch.stack(batch, dim=0)
             batch_feats = self.run_on_a_batch(batch)
             vid_feats.extend(batch_feats.tolist())

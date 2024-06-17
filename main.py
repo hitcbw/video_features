@@ -44,7 +44,8 @@ def main(args_cli):
 
     print(f'The number of specified videos: {len(video_paths)}')
 
-    for video_path in tqdm(video_paths):
+    for video_path in video_paths:
+        print('sovling: ', video_path)
         extractor._extract(video_path)  # note the `_` in the method name
 
     # yep, it is this simple!
